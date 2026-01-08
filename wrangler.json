@@ -12,5 +12,21 @@
 	],
 	"observability": {
 		"enabled": true
-	}
+	},
+	"rules": [
+		{
+			"type": "Text",
+			"globs": [
+				"**/*.html"
+			],
+			"fallthrough": true
+		},
+		{
+			"type": "Data",
+			"globs": [
+				"**/*.jpg"
+			],
+			"fallthrough": true
+		}
+	]
 }

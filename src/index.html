@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>habit.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#FF7F5C',
+                            black: '#000000',
+                            white: '#FFFFFF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: Georgia, serif;
+        }
+
+        /* 
+           Using the requested CSS technique with the provided brush stroke image.
+           The slice values are adjusted to work with the generated image proportions.
+        */
+        mark {
+            border-image-source: url("brush_stroke.jpg");
+            /* Slicing to include the middle part of the stroke and avoid the very edges with dots */
+            border-image-slice: 0 150 0 150 fill;
+            border-image-width: 0px 4ch 0px 4ch;
+            border-image-outset: 0.5em 4ch 0.5em 4ch;
+            border-image-repeat: stretch;
+            background-color: transparent;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+
+            opacity: 1;
+            color: white;
+            padding: 0.1em 0;
+            font-weight: normal;
+        }
+
+        ::selection {
+            background: #FF7F5C;
+            color: white;
+        }
+
+        .manifesto-text {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Modal Styles */
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+        }
+        
+        dialog {
+            background: transparent;
+            border: none;
+            padding: 0;
+            max-width: 100vw;
+            max-height: 100vh;
+        }
+        
+        /* Animation */
+        dialog[open] {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-black text-white antialiased overflow-x-hidden">
+
+<div class="max-w-[1400px] mx-auto px-6 md:px-12">
+    <!-- Header -->
+    <header class="flex justify-between items-center py-8">
+        <div class="font-sans font-bold text-3xl md:text-4xl tracking-tighter text-white">
+            habit.
+        </div>
+
+        <!-- Sign Up Button -->
+        <button onclick="openModal()" class="relative group">
+            <div class="absolute inset-0 bg-[#FF7F5C] rounded-lg translate-x-1.5 translate-y-1.5"></div>
+            <div class="relative bg-white text-black font-sans font-bold text-sm md:text-base px-8 py-2.5 rounded-lg border-2 border-white transition-transform group-active:translate-y-1 group-active:translate-x-1">
+                sign up
+            </div>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="mt-20 md:mt-32 mb-24 text-center mx-auto">
+        <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.1] mb-12 tracking-tight font-serif">
+            The Advisory Board<br>
+            Better Than Most Fortune 500 CEOs Have.
+        </h1>
+
+        <div class="relative inline-block leading-[1.5]">
+            <h2 class="text-3xl md:text-5xl lg:text-[4rem] text-white font-serif">
+                <mark>For The Price Of A Netflix Subscription.</mark>
+            </h2>
+        </div>
+    </section>
+
+    <!-- Manifesto Section -->
+    <section class="max-w-2xl mx-auto my-32 px-4">
+        <div class="manifesto-text space-y-8 text-white font-serif text-center md:text-left">
+            <p>Somewhere between ambition and self-help, we replaced guidance with content.</p>
+
+            <p>Everyone says "learn from the best" then sells you a course, a book, a framework, or a one-off call.</p>
+
+            <p>Everyone says "this expert changed my life" but you get access once, maybe twice, then you're on your own
+                again.</p>
+
+            <p>People don't need more information.<br>
+                They need someone who stays.</p>
+
+            <p>Instead, we built a world of clips, newsletters, threads, and advice that disappears the moment you
+                actually need it.</p>
+
+            <p>You Google.<br>
+                You watch.<br>
+                You save.<br>
+                You forget.</p>
+
+            <p>You make decisions alone, then wonder why consistency breaks.</p>
+
+            <p>The best people don't work like that.<br>
+                They don't "learn and hope."<br>
+                They talk. They check in. They adjust. They get pushed.</p>
+
+            <p>They have advisors. Not motivational quotes.</p>
+
+            <p>Not one-hour sessions. Ongoing conversations.</p>
+
+            <p>We built AI to generate more content. More answers. More noise.</p>
+
+            <p>But progress doesn't come from faster answers.<br>
+                It comes from better questions, asked at the right moment, by someone who knows you.</p>
+
+            <p>Knowing isn't the edge.<br>
+                Sticking with it is.</p>
+
+            <p class="uppercase tracking-widest text-sm font-bold mt-16 mb-6">Habit.</p>
+
+            <p>An advisory board you can actually talk to.<br>
+                Across health, work, leadership, money, and life.</p>
+
+            <p>Available 24/7.</p>
+
+            <p>For less than a streaming subscription.</p>
+
+            <p>Not to impress you.<br>
+                To stay with you.</p>
+
+            <p>Because figuring things out alone was never the goal.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="text-center pb-32">
+        <button onclick="openModal()" class="relative group inline-block">
+            <div class="absolute inset-0 bg-[#FF7F5C] rounded-lg translate-x-1.5 translate-y-1.5"></div>
+            <div class="relative bg-white text-black font-sans font-bold text-base md:text-lg px-10 py-3 rounded-lg border-2 border-white transition-transform group-active:translate-y-1 group-active:translate-x-1">
+                Join the waitlist
+            </div>
+        </button>
+    </section>
+</div>
+
+<!-- Modal -->
+<dialog id="waitlist-modal" class="p-4 rounded-xl bg-transparent backdrop:backdrop-blur-sm w-full max-w-md mx-auto">
+    <div class="bg-black border border-gray-800 p-8 rounded-xl w-full shadow-2xl relative text-center">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        
+        <h3 class="text-2xl font-serif mb-2">Join the Waitlist</h3>
+        <p class="text-gray-400 mb-6 text-sm">Be the first to know when we launch.</p>
+        
+        <form id="waitlist-form" onsubmit="submitWaitlist(event)" class="space-y-4">
+            <input type="email" id="email" required placeholder="name@example.com" 
+                   class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#FF7F5C] transition-colors">
+            
+            <button type="submit" id="submit-btn" class="w-full bg-[#FF7F5C] hover:bg-[#ff6b45] text-white font-sans font-bold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                Join Now
+            </button>
+            
+            <p class="text-[10px] text-gray-500 leading-tight">
+                By joining, you agree to receive updates and promotional emails from Habit. You can unsubscribe at any time.
+            </p>
+        </form>
+
+        <div id="success-message" class="hidden mt-6 text-[#FF7F5C] font-bold">
+            You're on the list! We'll be in touch.
+        </div>
+        <div id="error-message" class="hidden mt-6 text-red-500 text-sm">
+            Something went wrong. Please try again.
+        </div>
+    </div>
+</dialog>
+
+<script>
+    const modal = document.getElementById('waitlist-modal');
+    const form = document.getElementById('waitlist-form');
+    const successMsg = document.getElementById('success-message');
+    const errorMsg = document.getElementById('error-message');
+    const submitBtn = document.getElementById('submit-btn');
+    const originalBtnText = submitBtn.textContent;
+
+    function openModal() {
+        modal.showModal();
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.close();
+        document.body.style.overflow = '';
+        // Reset form state
+        setTimeout(() => {
+            form.reset();
+            form.classList.remove('hidden');
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+            // Reset button just in case
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+        }, 200);
+    }
+
+    // Close on backdrop click
+    modal.addEventListener('click', (e) => {
+        const dialogDimensions = modal.getBoundingClientRect();
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            closeModal();
+        }
+    });
+
+    async function submitWaitlist(e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        
+        // Set loading state
+        submitBtn.textContent = 'Joining...';
+        submitBtn.disabled = true;
+        errorMsg.classList.add('hidden');
+
+        try {
+            const response = await fetch('/api/waitlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            if (response.ok) {
+                form.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+                setTimeout(() => {
+                    closeModal();
+                }, 2000);
+            } else if (response.status === 409) {
+                throw new Error('Email already on the list');
+            } else {
+                throw new Error('Failed to join');
+            }
+        } catch (error) {
+            console.error(error);
+            errorMsg.innerText = error.message;
+            errorMsg.classList.remove('hidden');
+            // Reset button state on error
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+        }
+    }
+</script>
+
+</body>
+</html>

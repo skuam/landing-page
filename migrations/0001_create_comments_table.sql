@@ -1,14 +1,8 @@
 -- Migration number: 0001 	 2024-12-27T22:04:18.794Z
-CREATE TABLE IF NOT EXISTS comments (
-    id INTEGER PRIMARY KEY NOT NULL,
-    author TEXT NOT NULL,
-    content TEXT NOT NULL
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS waitlist;
+CREATE TABLE IF NOT EXISTS waitlist (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT NOT NULL UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-
--- Insert some sample data into our comments table.
-INSERT INTO comments (author, content)
-VALUES
-    ('Kristian', 'Congrats!'),
-    ('Serena', 'Great job!'),
-    ('Max', 'Keep up the good work!')
-;
